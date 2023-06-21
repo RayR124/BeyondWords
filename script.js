@@ -96,7 +96,10 @@ function submitUpgrade(event) {
   let expiryDate = document.getElementById("expiryDate").value;
   let cvv = document.getElementById("cvv").value;
 
-  if (creditCard !== "" && expiryDate !== "" && cvv !== "") {
+  if (creditCard === "" || expiryDate === "" || cvv === "") {
+    // Display a popup or error message
+    alert("All credit card information must be present to proceed.");
+  } else {
     // Here you can perform any necessary validation on the credit card details
 
     // Assuming the validation is successful, update the membership status
