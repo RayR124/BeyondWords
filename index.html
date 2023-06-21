@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BeyondWords</title>
+    <link rel="stylesheet" type="text/css" href="style.css">
+</head>
+
+<body>
+    <h1>Welcome to BeyondWords</h1>
+    <h2 id="intro">Don't worry, we'll walk you through this, step by step.</h2>
+  
+    <div id="loginForm">
+        <h2>The first thing you should do is Login</h2>
+        <form>
+          <label for="username">Username:</label>
+          <input type="text" id="username" minlength="5" required>
+    
+          <label for="password">Password:</label>
+          <input type="password" id="password" minlength="8" required>
+    
+          <button type="button" onclick="login(event)">Login</button>
+        </form>
+        <p>Don't have an account? <a href="#" onclick="showSignupForm()">Sign up for free</a></p>
+      </div>
+    
+      <div id="signupForm" style="display: none;">
+        <h2>Sign Up for a free account</h2>
+        <form>
+          <label for="newUsername">Username:</label>
+          <input type="text" id="newUsername" minlength="5" required>
+    
+          <label for="newPassword">Password:</label>
+          <input type="password" id="newPassword" minlength="8" required>
+    
+          <button type="button" onclick="signup(event)">Sign Up for free</button>
+        </form>
+        <p>Already have an account? <a href="#" onclick="showLoginForm()">Login</a></p>
+      </div>
+    
+      <div id="userProfile" style="display: none;">
+        <h2>Welcome, <span id="loggedInUsername"></span>!</h2>
+        <p>You currently have a <span id="membershipStatus"></span> membership.</p>
+        <button id="upgradeBasicButton" onclick="upgradeBasicMembership()">Upgrade to Basic</button>
+        <button id="upgradePremiumButton" onclick="upgradePremiumMembership()">Upgrade to Premium</button>
+      </div>
+    
+      <div id="upgradeForm" style="display: none;">
+        <h2>Upgrade Membership</h2>
+        <form>
+          <label for="creditCard">Credit Card Number:</label>
+          <input type="text" id="creditCard" minlength="12" required>
+    
+          <label for="expiryDate">Expiry Date:</label>
+          <input type="text" id="expiryDate" minlength="4" required>
+    
+          <label for="cvv">CVV:</label>
+          <input type="text" id="cvv" minlength="3" required>
+    
+          <button type="button" onclick="submitUpgrade(event)">Submit</button>
+        </form>
+      </div>
+
+      <div id="freeContent" style="display: none;">
+        <h3>If you are just visiting, or still considering a premium membership, please consider the following:</h3>
+        <h2><ul>Our platform offers you the opportunity to join an affordable monthly subscription that enables you to compose and store heartfelt messages to your loved ones. Within our secure database, you can create a personalized list of individuals, complete with their mailing addresses, and assign a unique message to each person.</ul><ul>When the time comes and your membership with our service ends, your letters to all designated recipients will be sent out in physical form. This means you can share your final words of wisdom with your children, express your deep love and farewells to your spouse, or even convey messages of resentment or reconciliation to your rivals.</ul><ul> The service is incredibly cost-effective, with a minimal fee of approximately one dollar per person listed per month.</ul><ul> Additionally, we offer a premium membership that grants you the ability to write longer letters, include more recipients, and even opt for additional services such as sending flowers alongside your letters. </ul><ul>To make it even more convenient, we plan to partner with various insurance carriers to seamlessly integrate our fees into your existing bills. This way, you won't have to worry about separate payments and can focus on cherishing these meaningful connections.</ul></h2>
+      </div>
+  
+      <div id="basicContent" style="display: none;">
+        <h3>Thank you for upgrading to BeyondWords Basic.</h3>
+        <h2><ul>With a basic account you can have up to 3 designatees. All of which will recieve a physical letter in the mail to the address on file at the time of this account's cancellation.</ul></h2>
+      </div>
+
+      <div id="premiumContent" style="display: none;">
+        <h3>Thank you for enrolling in BeyondWords Premium.</h3>
+        <h2><ul>With a premium account you can have up to 10 designatees. All of which will recieve a physical letter in the mail to the address on file at the time of this account's cancellation.</ul><ul>Additionally, 1 of your designatees will recieve a bouquet of flowersdelievered by hand with their letter.</ul></h2>
+      </div>
+    
+      <script src="script.js"></script>
+    </body>
+    </html>
