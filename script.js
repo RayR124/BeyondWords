@@ -1,4 +1,4 @@
-var loggedInUser = null;
+let loggedInUser = null;
 let membershipStatus = "free"; // Default membership status
 
 function showSignupForm() {
@@ -13,40 +13,52 @@ function showLoginForm() {
 
 function signup(event) {
   event.preventDefault(); // Prevent default form submission behavior
-  var newUsername = document.getElementById("newUsername").value;
-  var newPassword = document.getElementById("newPassword").value;
+  let newUsername = document.getElementById("newUsername").value;
+  let newPassword = document.getElementById("newPassword").value;
 
-  // Perform signup logic here, e.g., creating a new user account
+  // Check if the fields have values
+  if (username === "" || password === "") {
+    // Display a popup or error message
+    alert("Username and password fields cannot be empty.");
+  } else {
+    // Perform signup logic here, e.g., creating a new user account
 
-  // Assuming signup is successful, update the logged-in user
-  loggedInUser = newUsername;
+    // Assuming signup is successful, update the logged-in user
+    loggedInUser = newUsername;
 
-  // Display the user profile with the appropriate membership status
-  document.getElementById("loggedInUsername").innerHTML = loggedInUser;
-  document.getElementById("membershipStatus").innerHTML = membershipStatus;
+    // Display the user profile with the appropriate membership status
+    document.getElementById("loggedInUsername").innerHTML = loggedInUser;
+    document.getElementById("membershipStatus").innerHTML = membershipStatus;
 
-  // Hide the signup form and show the user profile
-  document.getElementById("signupForm").style.display = "none";
-  document.getElementById("userProfile").style.display = "block";
+    // Hide the signup form and show the user profile
+    document.getElementById("signupForm").style.display = "none";
+    document.getElementById("userProfile").style.display = "block";
+  }
 }
 
 function login(event) {
   event.preventDefault(); // Prevent default form submission behavior
-  var username = document.getElementById("username").value;
-  var password = document.getElementById("password").value;
+  let username = document.getElementById("username").value;
+  let password = document.getElementById("password").value;
 
-  // Perform login logic here, e.g., verifying username and password
+  // Check if the fields have values
+  if (username === "" || password === "") {
+    // Display a popup or error message
+    alert("Username and password fields cannot be empty.");
+  } else {
+    // Perform login logic here, e.g., verifying username and password
 
-  // Assuming login is successful, update the logged-in user
-  loggedInUser = username;
+    // Assuming login is successful, update the logged-in user
+    loggedInUser = username;
 
-  // Display the user profile with the appropriate membership status
-  document.getElementById("loggedInUsername").innerHTML = loggedInUser;
-  document.getElementById("membershipStatus").innerHTML = membershipStatus;
+    // Display the user profile with the appropriate membership status
+    document.getElementById("loggedInUsername").innerHTML = loggedInUser;
+    document.getElementById("membershipStatus").innerHTML = membershipStatus;
 
-  // Hide the login form and show the user profile
-  document.getElementById("loginForm").style.display = "none";
-  document.getElementById("userProfile").style.display = "block";
+    // Hide the login form and show the user profile
+    document.getElementById("loginForm").style.display = "none";
+    document.getElementById("userProfile").style.display = "block";
+  }
 }
 
 function upgradeBasicMembership() {
@@ -80,19 +92,21 @@ function upgradePremiumMembership() {
 
 function submitUpgrade(event) {
   event.preventDefault(); // Prevent default form submission behavior
-  var creditCard = document.getElementById("creditCard").value;
-  var expiryDate = document.getElementById("expiryDate").value;
-  var cvv = document.getElementById("cvv").value;
+  let creditCard = document.getElementById("creditCard").value;
+  let expiryDate = document.getElementById("expiryDate").value;
+  let cvv = document.getElementById("cvv").value;
 
-  // Here you can perform any necessary validation on the credit card details
+  if (creditCard !== "" && expiryDate !== "" && cvv !== "") {
+    // Here you can perform any necessary validation on the credit card details
 
-  // Assuming the validation is successful, update the membership status
-  document.getElementById("membershipStatus").innerHTML = membershipStatus;
+    // Assuming the validation is successful, update the membership status
+    document.getElementById("membershipStatus").innerHTML = membershipStatus;
 
-  // Hide the upgrade form and show the user profile
-  document.getElementById("upgradeForm").style.display = "none";
-  document.getElementById("userProfile").style.display = "block";
-  document.getElementById("intro").style.display = "none";
+    // Hide the upgrade form and show the user profile
+    document.getElementById("upgradeForm").style.display = "none";
+    document.getElementById("userProfile").style.display = "block";
+    document.getElementById("intro").style.display = "none";
+  }
 }
 
 function showContentBasedOnMembershipStatus() {
