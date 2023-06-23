@@ -103,14 +103,74 @@ function submitUpgrade(event) {
     // Here you can perform any necessary validation on the credit card details
 
     // Assuming the validation is successful, update the membership status
+    if (membershipStatus === "free" && creditCardValidated()) {
+      membershipStatus = "basic";
+    } else if (membershipStatus === "basic" || membershipStatus === "free" && creditCardValidated()) {
+      membershipStatus = "premium";
+    }
+
+    // Display the updated membership status
     document.getElementById("membershipStatus").innerHTML = membershipStatus;
 
-    // Hide the upgrade form and show the user profile
+    // Hide the upgrade form
     document.getElementById("upgradeForm").style.display = "none";
+
+    // Show the user profile and content
     document.getElementById("userProfile").style.display = "block";
     document.getElementById("intro").style.display = "none";
+    showContentBasedOnMembershipStatus();
   }
 }
+
+function creditCardValidated() {
+  // Get the credit card details
+  let creditCardNumber = document.getElementById("creditCard").value;
+  let expiryDate = document.getElementById("expiryDate").value;
+  let cvv = document.getElementById("cvv").value;
+
+  // Validate the credit card number
+  if (!isValidCreditCardNumber(creditCardNumber)) {
+    alert("Invalid credit card number");
+    return false;
+  }
+
+  // Validate the expiration date
+  if (!isValidExpiryDate(expiryDate)) {
+    alert("Invalid expiration date");
+    return false;
+  }
+
+  // Validate the CVV
+  if (!isValidCVV(cvv)) {
+    alert("Invalid CVV");
+    return false;
+  }
+
+  // All validation checks passed
+  return true;
+}
+
+function isValidCreditCardNumber(creditCardNumber) {
+  // Implement your credit card number validation logic here
+  // Return true if the credit card number is valid; otherwise, return false
+  // You can use regular expressions or third-party libraries for more advanced validation
+  return creditCardNumber.length === 16; // Example: Check if the credit card number has 16 digits
+}
+
+function isValidExpiryDate(expiryDate) {
+  // Implement your expiration date validation logic here
+  // Return true if the expiration date is valid; otherwise, return false
+  // You can check if the expiry date is in the future, has a valid format, etc.
+  return expiryDate.length === 4; // Example: Check if the expiry date has 4 digits (MMYY format)
+}
+
+function isValidCVV(cvv) {
+  // Implement your CVV validation logic here
+  // Return true if the CVV is valid; otherwise, return false
+  // You can check the length, format, etc. depending on the card type
+  return cvv.length === 3; // Example: Check if the CVV has 3 digits
+}
+
 
 function showContentBasedOnMembershipStatus() {
   if (membershipStatus === "free") {
@@ -132,3 +192,14 @@ function showContentBasedOnMembershipStatus() {
 
 // Call the function to initially show the appropriate content based on membership status
 showContentBasedOnMembershipStatus();
+
+
+function saveData() {
+  var name = document.getElementById("name").value;
+  var address = document.getElementById("address").value;
+  var message = document.getElementById("message").value;
+
+  // Perform actions with the captured values
+
+  alert("Data saved successfully!");
+}
